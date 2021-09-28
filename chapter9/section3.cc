@@ -1,4 +1,7 @@
-#include <bits/stdc++.h>
+#include <iostream>
+#include <queue>
+#include <stack>
+#include <string>
 
 template <typename T>
 class MinStack {
@@ -11,7 +14,9 @@ public:
         this->st.emplace(value, min);
     }
 
-    T min() { return this->st.top().second; }
+    T min() {
+        return this->st.top().second;
+    }
 
     void pop() {
         if (this->st.empty()) return;
@@ -61,7 +66,9 @@ private:
     std::stack<T> st1, st2;
 
 public:
-    void push(T value) { this->st2.push(value); }
+    void push(T value) {
+        this->st2.push(value);
+    }
 
     T front() {
         if (this->st1.empty()) {
@@ -85,7 +92,9 @@ private:
     std::queue<std::pair<size_t, std::string>> cats, dogs;
 
 public:
-    void enqueue(std::string name, bool isCat) { (isCat ? this->cats : this->dogs).emplace(this->counter++, name); }
+    void enqueue(std::string name, bool isCat) {
+        (isCat ? this->cats : this->dogs).emplace(this->counter++, name);
+    }
 
     std::string dequeueAny() {
         if (this->cats.empty() && this->dogs.empty()) return "";

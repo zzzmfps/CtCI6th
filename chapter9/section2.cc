@@ -1,4 +1,4 @@
-#include <bits/stdc++.h>
+#include <stack>
 
 template <typename T>
 struct Node {
@@ -69,22 +69,22 @@ public:
     }
 
     static Node<int> *sumOfTwoLists(Node<int> *head1, Node<int> *head2) {
-        Node<int> *res = new Node(0), *cur = res;
+        Node<int> *res = new Node<int>(0), *cur = res;
         bool carry = false;
         for (; head1 && head2; head1 = head1->next, head2 = head2->next) {
             int sum = head1->value + head2->value + carry;
             Section2::checkSumAndCarry(sum, carry);
-            cur->next = new Node(sum);
+            cur->next = new Node<int>(sum);
             cur = cur->next;
         }
         auto remains = (head1 ? head1 : head2);
         for (; remains; remains = remains->next) {
             int sum = remains->value + carry;
             Section2::checkSumAndCarry(sum, carry);
-            cur->next = new Node(sum);
+            cur->next = new Node<int>(sum);
             cur = cur->next;
         }
-        if (carry) cur->next = new Node(1);
+        if (carry) cur->next = new Node<int>(1);
         return res->next;
     }
 
@@ -98,7 +98,7 @@ public:
         };
         pushToStack(st1, head1), pushToStack(st2, head2);
 
-        Node<int> *sentinel = new Node(0);
+        Node<int> *sentinel = new Node<int>(0);
         bool carry = false;
         while (!st1.empty() && !st2.empty()) {
             auto n1 = st1.top(), n2 = st2.top();

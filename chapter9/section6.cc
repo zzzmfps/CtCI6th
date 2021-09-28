@@ -1,4 +1,7 @@
-#include <bits/stdc++.h>
+#include <ctime>
+#include <iostream>
+#include <random>
+#include <string>
 
 class Section6 {
 public:

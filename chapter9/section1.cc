@@ -1,4 +1,7 @@
-#include <bits/stdc++.h>
+#include <algorithm>
+#include <string>
+#include <unordered_set>
+#include <vector>
 
 class Section1 {
 private:

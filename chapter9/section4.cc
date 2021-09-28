@@ -1,4 +1,9 @@
-#include <bits/stdc++.h>
+#include <iostream>
+#include <list>
+#include <random>
+#include <unordered_map>
+#include <unordered_set>
+#include <vector>
 
 template <typename T>
 class GraphNode {
@@ -9,13 +14,21 @@ private:
 public:
     GraphNode(const T &val) : value(val) {}
 
-    const T &getValue() { return this->value; }
+    const T &getValue() {
+        return this->value;
+    }
 
-    void setValue(const T &val) { this->value = val; }
+    void setValue(const T &val) {
+        this->value = val;
+    }
 
-    void getConnects(GraphNode *node) { this->connects.insert(node); }
+    void getConnects(GraphNode *node) {
+        this->connects.insert(node);
+    }
 
-    const std::unordered_set<GraphNode *> &getConnects() { return this->connects; }
+    const std::unordered_set<GraphNode *> &getConnects() {
+        return this->connects;
+    }
 
     bool isConnected(GraphNode *node) {
         if (this == node) {
@@ -49,11 +62,17 @@ private:
 public:
     TreeNode(const T &val) : value(val) {}
 
-    const T &getValue() { return this->value; }
+    const T &getValue() {
+        return this->value;
+    }
 
-    TreeNode *setLeftChild(const T &val) { return this->lchild = new TreeNode(val); }
+    TreeNode *setLeftChild(const T &val) {
+        return this->lchild = new TreeNode(val);
+    }
 
-    TreeNode *setRightChild(const T &val) { return this->rchild = new TreeNode(val); }
+    TreeNode *setRightChild(const T &val) {
+        return this->rchild = new TreeNode(val);
+    }
 
     void levelTraverse(auto &&p1, auto &&p2, int level = -1) {
         if (0 == level) return;
@@ -331,7 +350,7 @@ public:
     }
 
     static void isBalanced() {
-        TreeNode<int> *root = new TreeNode(1);
+        TreeNode<int> *root = new TreeNode<int>(1);
         TreeNode<int> *n2 = root->setLeftChild(2);
         TreeNode<int> *n3 = root->setRightChild(3);
         TreeNode<int> *n4 = n2->setLeftChild(4);
@@ -344,7 +363,7 @@ public:
     }
 
     static void isBST() {
-        TreeNode<int> *root = new TreeNode(2);
+        TreeNode<int> *root = new TreeNode<int>(2);
         TreeNode<int> *n2 = root->setLeftChild(1);
         TreeNode<int> *n3 = root->setRightChild(3);
         std::cout << TreeNode<int>::isBST(root) << '\n'; // true
@@ -353,7 +372,7 @@ public:
     }
 
     static void successor() {
-        TreeNode<int> *root = new TreeNode(3);
+        TreeNode<int> *root = new TreeNode<int>(3);
         TreeNode<int> *n2 = root->setLeftChild(2);
         TreeNode<int> *n3 = root->setRightChild(4);
         TreeNode<int> *n4 = n2->setLeftChild(0);
@@ -373,7 +392,7 @@ public:
         std::pair<std::string, std::string> dep[] = {{"a", "d"}, {"f", "b"}, {"b", "d"}, {"f", "a"}, {"d", "c"}};
 
         std::unordered_map<std::string, GraphNode<int> *> pros;
-        for (size_t i = 0; i < 6; ++i) pros[projects[i]] = new GraphNode(0);
+        for (size_t i = 0; i < 6; ++i) pros[projects[i]] = new GraphNode<int>(0);
         for (size_t i = 0; i < 5; ++i) {
             auto &px = pros[dep[i].first], &py = pros[dep[i].second];
             px->getConnects(py);
@@ -396,7 +415,7 @@ public:
     }
 
     static void findFirstCommonAncestor() {
-        TreeNode<int> *root = new TreeNode(1);
+        TreeNode<int> *root = new TreeNode<int>(1);
         TreeNode<int> *n2 = root->setLeftChild(2);
         TreeNode<int> *n3 = root->setRightChild(3);
         TreeNode<int> *n4 = n2->setLeftChild(4);
